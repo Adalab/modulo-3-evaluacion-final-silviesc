@@ -7,6 +7,7 @@ import "../scss/App.scss";
 import { Route, Routes } from "react-router-dom";
 import CharacterCard from "./CharacterCard";
 import { useLocation, matchPath } from 'react-router';
+import BackBtn from "./BackBtn";
 // import ls from '../services/localStorage';
 
 const App = () => {
@@ -61,6 +62,7 @@ const App = () => {
         element={
           <div className="secondBody">
             <Header />
+            <BackBtn />
             <CharacterCard userData={userData}/>
           </div>
         }
