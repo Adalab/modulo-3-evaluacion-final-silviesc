@@ -1,12 +1,14 @@
-import notfound from "../images/notfound.png"
+import { Link } from "react-router-dom"
+import Character from "./Character"
 
-function CharacterList({allCharacters}) {
 
-    const renderAllCharacters = allCharacters.map((character) => {
+function CharacterList({filteredCharacters}) {
+
+  const renderAllCharacters = filteredCharacters.map((character) => {
         return <section key={character.id} className="card">
-            <img src={character.photo || notfound} alt={character.name} className="img"/>
-            <h5 className="text">{character.name}</h5>
-            <p className="text">{character.species}</p>
+            <Link to={`/character/${character.id}`}>
+              <Character character={character}/>
+            </Link>
         </section>
     })
 
@@ -17,4 +19,4 @@ function CharacterList({allCharacters}) {
   )
 }
 
-export default CharacterList
+export default CharacterList;

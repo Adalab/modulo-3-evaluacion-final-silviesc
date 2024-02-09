@@ -1,15 +1,14 @@
-
-function Filters() {
+function Filters({filterHouse, handleHouse, filterName, handleName}) {
   return (
     <form className="formContainer">
         <article>
             <label htmlFor="search" className="formText">Busca por personaje:</label>
-            <input type="text" placeholder="Hermione" id="search" className="formInput"/>
+            <input type="text" placeholder="Hermione" id="search" className="formInput" onChange={(ev) => handleName(ev.target.value)} value={filterName}/>
         </article>
         
         <article>
-            <label htmlFor="options" className="formText">Selecciona la casa:</label>
-            <select id="options" className="formInput">
+            <label className="formText">Selecciona la casa:</label>
+            <select className="formInput" onChange={(ev) => handleHouse(ev.target.value)} value={filterHouse}>
                 <option value="gryffindor">Gryffindor</option>
                 <option value="slytherin">Slytherin</option>
                 <option value="ravenclaw">Ravenclaw</option>
@@ -20,4 +19,4 @@ function Filters() {
   )
 }
 
-export default Filters
+export default Filters;

@@ -1,30 +1,72 @@
-import '../scss/App.scss';
-import Header from "./Header"
-import CharacterList from "./CharacterList";
-import callToApi from "../services/api";
 import { useEffect, useState } from "react";
-import ls from '../services/localStorage';
-import { Link, Route, Routes } from "react-router-dom";
-import wallpaper from "../images/background.jpeg"
+import wallpaper from "../images/wallpaper2.jpeg";
 import Filters from "./Filters";
+import CharacterList from "./CharacterList";
+import Header from "./Header";
+import callToApi from "../services/api";
+import "../scss/App.scss";
+import { Route, Routes } from "react-router-dom";
+import CharacterCard from "./CharacterCard";
+import { useLocation, matchPath } from 'react-router';
+// import ls from '../services/localStorage';
 
 const App = () => {
-
-const [allCharacters, setAllCharacters] = useState([]);
+  const [allCharacters, setAllCharacters] = useState([]);
+  const [filterHouse, setFilterHouse] = useState("gryffindor");
+  const [filterName, setFilterName] = useState("");
 
   useEffect(() => {
-    callToApi().then((characters) => 
-    setAllCharacters(characters))
-  }, [])
+    callToApi().then((characters) => setAllCharacters(characters));
+  }, []);
+
+  const handleHouse = (value) => {
+    setFilterHouse(value);
+  };
+
+  const handleName = (value) => {
+    setFilterName(value);
+  };
+
+  const filteredCharacters = allCharacters
+    .filter(
+      (character) => character.house.toLowerCase() === filterHouse.toLowerCase()
+    )
+    .filter((character) =>
+      character.name.toLowerCase().includes(filterName.toLowerCase())
+    );
+
+  const {pathname} = useLocation();
+  const routeData = matchPath("/character/:idCharacter", pathname)
+  const idCharacter = routeData !== null ? routeData.params.idCharacter : null;
+  const userData = allCharacters.find((character) => character.id === idCharacter);
 
   return (
-    <div style={{ backgroundImage: `url(${wallpaper})`}}>
-      <Header/>
-      <Filters />
-      <CharacterList allCharacters={allCharacters}/>
-    </div>
-  )
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <div style={{ backgroundImage: `url(${wallpaper})` }}>
+            <Header />
+            <Filters
+              handleHouse={handleHouse}
+              filterHouse={filterHouse}
+              handleName={handleName}
+              filterName={filterName}
+            />
+            <CharacterList filteredCharacters={filteredCharacters} />
+          </div>
+        }
+      />
+      <Route
+        path="/character/:idCharacter"
+        element={
+          <div style={{ backgroundImage: `url(${wallpaper})` }}>
+            <CharacterCard userData={userData}/>
+          </div>
+        }
+      />
+    </Routes>
+  );
 };
 
 export default App;
-
