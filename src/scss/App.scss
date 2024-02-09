@@ -1,48 +1,83 @@
-@import 'core/reset';
+@import "core/reset";
+
+.firstBody {
+  background-image: url("../images/stars.avif");
+}
 
 .headerContainer {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .header {
-    width: 400px;
-    padding: 50px;
+  width: 400px;
+  padding: 50px;
 }
 .formContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 50px;
 }
 .formText {
-    color: white;
-    font-family: 'Harry Potter', sans-serif;
-    font-size: 20px;
-    padding: 0px 20px;
+  color: white;
+  font-family: "Harry Potter", sans-serif;
+  font-size: 20px;
+  padding: 0px 20px;
 }
 .formInput {
-    font-family: 'Harry Potter', sans-serif;
-    padding: 5px;
+  font-family: "Harry Potter", sans-serif;
+  padding: 5px;
 }
 
 .bigContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 50px;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: center;
 }
 .card {
-    background-color: rgb(255, 183, 0);
-    border: 5px solid rgba(255, 183, 0, 0.876);
+  background-color: rgba(255, 212, 69, 0.742);
+  border-radius: 5px;
+  text-decoration: none;
+}
+.link {
     text-decoration: none;
+    color: black;
 }
 .img {
-    width: 200px;
+  width: 200px;
 }
 .text {
-    font-size: 16px;
-    font-family: 'Harry Potter', sans-serif;
-    padding: 5px 10px;
+  font-size: 16px;
+  font-family: "Harry Potter", sans-serif;
+  padding: 5px 10px;
+}
+
+.secondBody {
+  background-image: url("../images/magic.jpeg");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.articleContainer {
+  display: flex;
+  background-color: rgba(255, 166, 0, 0.606);
+  border-radius: 5px;
+  width: 500px;
+}
+.sectionContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: black;
+  font-family: "Harry Potter", sans-serif;
+  font-size: 20px;
+}
+.articlePhoto {
+  width: 250px;
+  padding: 20px;
 }

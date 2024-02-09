@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import wallpaper from "../images/wallpaper2.jpeg";
 import Filters from "./Filters";
 import CharacterList from "./CharacterList";
 import Header from "./Header";
@@ -45,7 +44,7 @@ const App = () => {
       <Route
         path="/"
         element={
-          <div style={{ backgroundImage: `url(${wallpaper})` }}>
+          <div className="firstBody">
             <Header />
             <Filters
               handleHouse={handleHouse}
@@ -60,7 +59,8 @@ const App = () => {
       <Route
         path="/character/:idCharacter"
         element={
-          <div style={{ backgroundImage: `url(${wallpaper})` }}>
+          <div className="secondBody">
+            <Header />
             <CharacterCard userData={userData}/>
           </div>
         }

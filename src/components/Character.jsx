@@ -1,9 +1,6 @@
 import notfound from "../images/notfound.png";
 
 function Character({ character }) {
-  if (!character) {
-    return <h1>Este personaje no existe</h1>
-  }
 
   return (
     <>
