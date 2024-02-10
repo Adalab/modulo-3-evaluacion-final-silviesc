@@ -1,12 +1,26 @@
 import notfound from "../images/notfound.png";
 import ls from '../sources/localStorage';
+import { useEffect, useState } from "react";
 
-function CharacterCard({ characterData, getSpecies, getGender }) {
+function CharacterCard({ characterData }) {
 
   ls.set('characterData', characterData);
 
   const getLifeStatusIcon = (alive) => {
     return alive ? <i className="fa-solid fa-heart-pulse"></i> : <i className="fa-solid fa-skull"></i>;
+  };
+
+  const getSpecies = (species) => {
+    if (species === "human") return "Humano/a";
+    if (species === "half-giant") return "Medio gigante";
+    if (species === "werewolf") return "Hombre lobo";
+    if (species === "house-elf") return "Elfo";
+    if (species === "goblin") return "Trasgo";
+    return species; 
+  };
+
+  const getGender = (gender) => {
+    return gender === "male" ? "Masculino" : "Femenino";
   };
 
   const getSpeciesIcon = (species) => {

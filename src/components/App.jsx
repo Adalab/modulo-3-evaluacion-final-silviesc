@@ -10,6 +10,7 @@ import CharacterCard from "./CharacterCard";
 import ls from '../sources/localStorage';
 import callToApi from "../sources/api";
 import Footer from "./Footer";
+import Error from "./Error";
 
 const App = () => {
   const [allCharacters, setAllCharacters] = useState([]);
@@ -23,7 +24,8 @@ const App = () => {
 
   useEffect(() => {
     ls.set('filterHouse', filterHouse);
-    ls.set('filterName', filterName)
+    ls.set('filterName', filterName);
+    ls.set('filterAncestors', filterAncestors);
   }, [filterHouse, filterName]);
 
   const handleHouse = (value) => {
@@ -47,19 +49,6 @@ const App = () => {
     setFilterAncestors('');
   }
 
-  const getSpecies = (species) => {
-    if (species === "human") return "Humano/a";
-    if (species === "half-giant") return "Medio gigante";
-    if (species === "werewolf") return "Hombre lobo";
-    if (species === "house-elf") return "Elfo";
-    if (species === "goblin") return "Trasgo";
-    return species; 
-  };
-
-  const getGender = (gender) => {
-    return gender === "male" ? "Masculino" : "Femenino";
-  };
-
   const filteredCharacters = allCharacters
     .filter(
       (character) => filterHouse === "" || character.house.toLowerCase() === filterHouse.toLowerCase()
@@ -68,7 +57,9 @@ const App = () => {
       character.name.toLowerCase().includes(filterName.toLowerCase())
     )
     .filter((character) => filterAncestors === "" || character.ancestry.toLowerCase() === filterAncestors.toLowerCase()
-    );
+    )
+    .sort((a, b) => a.name.localeCompare(b.name));
+    ;
 
   const {pathname} = useLocation();
   const routeData = matchPath("/character/:idCharacter", pathname)
@@ -102,10 +93,11 @@ const App = () => {
           <div className="secondBody">
             <Header />
             <BackBtn />
-            <CharacterCard characterData={characterData} getSpecies={getSpecies} getGender={getGender}/>
+            <CharacterCard characterData={characterData}/>
           </div>
         }
       />
+      <Route path="*" element={<Error />} />
     </Routes>
   );
 };
