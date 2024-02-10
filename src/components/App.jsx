@@ -39,6 +39,19 @@ const App = () => {
     setFilterName('');
   }
 
+  const getSpecies = (species) => {
+    if (species === "human") return "Humano/a";
+    if (species === "half-giant") return "Medio gigante";
+    if (species === "werewolf") return "Hombre lobo";
+    if (species === "house-elf") return "Elfo";
+    if (species === "goblin") return "Trasgo";
+    return species; 
+  };
+
+  const getGender = (gender) => {
+    return gender === "male" ? "Masculino" : "Femenino";
+  };
+
   const filteredCharacters = allCharacters
     .filter(
       (character) => character.house.toLowerCase() === filterHouse.toLowerCase()
@@ -76,7 +89,7 @@ const App = () => {
           <div className="secondBody">
             <Header />
             <BackBtn />
-            <CharacterCard userData={userData}/>
+            <CharacterCard userData={userData} getSpecies={getSpecies} getGender={getGender}/>
           </div>
         }
       />
