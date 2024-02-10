@@ -82,7 +82,7 @@ const App = () => {
               filterAncestors={filterAncestors}
               handleReset={handleReset}
             />
-            <CharacterList filteredCharacters={filteredCharacters}/>
+            <CharacterList filteredCharacters={filteredCharacters} filterName={filterName}/>
             <Footer />
           </div>
         }

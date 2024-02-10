@@ -154,3 +154,23 @@
   align-items: center;
   font-family: "Harry Potter", sans-serif;
 }
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.search {
+  font-family: "Harry Potter", sans-serif;
+  font-size: 20px;
+  color: white;
+}
+.broom {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.fa-broom {
+  color: white;
+}

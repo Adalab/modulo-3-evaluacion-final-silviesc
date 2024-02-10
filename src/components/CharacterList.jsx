@@ -1,27 +1,30 @@
-import { Link } from "react-router-dom"
-import Character from "./Character"
+import { Link } from "react-router-dom";
+import Character from "./Character";
 
-
-function CharacterList({filteredCharacters}) {
-
-  const renderAllCharacters = filteredCharacters.map((character) => {
-        return <section key={character.id} className="card">
-            <Link to={`/character/${character.id}`} className="link">
-              <Character character={character}/>
-            </Link>
-        </section>
-    })
-
+function CharacterList({ filteredCharacters, filterName }) {
   return (
-    <div className="bigContainer">
-        {renderAllCharacters}
-    </div>
-  )
+    <section className="bigContainer">
+      {filteredCharacters.length !== 0 ? (
+        filteredCharacters.map((character) => (
+          <article key={character.id} className="card">
+            <Link to={`/character/${character.id}`} className="link">
+              <Character character={character} />
+            </Link>
+          </article>
+        ))
+      ) : (
+        <article className="searchContainer">
+          <p className="search">
+            No hay ningún personaje que coincida con la palabra "{filterName}"
+          </p>
+          <div className="broom"> 
+            <p className="search">Prueba a limpiar tu búsqueda</p>
+            <i className="fa-solid fa-broom"></i>
+          </div>
+        </article>
+      )}
+    </section>
+  );
 }
 
 export default CharacterList;
-
-//       <section className="bigContainer">
-//         <ul>{filteredCharacters.length !== 0 ? (renderAllCharacters) : (<li>No hay ningún personaje que coincida con la palabra {filterByName.toUpperCase()}</li>)}
-// </ul>
-//       </section>
