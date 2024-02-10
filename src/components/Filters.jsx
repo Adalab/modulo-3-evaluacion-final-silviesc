@@ -1,4 +1,4 @@
-function Filters({ filterHouse, handleHouse, filterName, handleName, handleReset }) {
+function Filters({ filterHouse, handleHouse, filterName, handleName, filterAncestors, handleAncestors, handleReset }) {
 
   const handleEnter = (event) => {
     if (event.key === "Enter") {
@@ -35,8 +35,25 @@ function Filters({ filterHouse, handleHouse, filterName, handleName, handleReset
               <option value="slytherin">Slytherin</option>
               <option value="ravenclaw">Ravenclaw</option>
               <option value="hufflepuff">Hufflepuff</option>
+              <option value="">Todas</option>
             </select>
           </article>
+
+          <article>
+            <label className="formText">Selecciona la pureza:</label>
+            <select
+              className="formInput"
+              onChange={(ev) => handleAncestors(ev.target.value)}
+              value={filterAncestors}
+            >
+              <option value="">Cualquiera</option>
+              <option value="pure-blood">Sangre Pura</option>
+              <option value="muggleborn">Sangre Sucia</option>
+              <option value="half-blood">Sangre mestiza</option>
+              <option value="squib">Squib</option>
+            </select>
+          </article>
+
         </form>
         <button className="resetBtn" onClick={handleReset}>
           <p>Reiniciar</p>

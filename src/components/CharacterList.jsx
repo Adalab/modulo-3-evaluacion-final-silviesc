@@ -20,3 +20,8 @@ function CharacterList({filteredCharacters}) {
 }
 
 export default CharacterList;
+
+//       <section className="bigContainer">
+//         <ul>{filteredCharacters.length !== 0 ? (renderAllCharacters) : (<li>No hay ningún personaje que coincida con la palabra {filterByName.toUpperCase()}</li>)}
+// </ul>
+//       </section>

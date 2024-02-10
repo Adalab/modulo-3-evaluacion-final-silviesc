@@ -9,11 +9,13 @@ import BackBtn from "./BackBtn";
 import CharacterCard from "./CharacterCard";
 import ls from '../sources/localStorage';
 import callToApi from "../sources/api";
+import Footer from "./Footer";
 
 const App = () => {
   const [allCharacters, setAllCharacters] = useState([]);
   const [filterHouse, setFilterHouse] = useState(() => ls.get('filterHouse') || "gryffindor");
   const [filterName, setFilterName] = useState(() => ls.get('filterName') || "");
+  const [filterAncestors, setFilterAncestors] = useState(() => ls.get('filterAncestors') || "");
 
   useEffect(() => {
     callToApi().then((characters) => setAllCharacters(characters));
@@ -31,12 +33,18 @@ const App = () => {
   const handleName = (value) => {
     setFilterName(value);
   };
+  
+  const handleAncestors = (value) => {
+    setFilterAncestors(value);
+  }
 
   const handleReset = () => {
     ls.remove('filterHouse');
     ls.remove('filterName');
+    ls.remove('filterAncestors');
     setFilterHouse('gryffindor');
     setFilterName('');
+    setFilterAncestors('');
   }
 
   const getSpecies = (species) => {
@@ -54,16 +62,18 @@ const App = () => {
 
   const filteredCharacters = allCharacters
     .filter(
-      (character) => character.house.toLowerCase() === filterHouse.toLowerCase()
+      (character) => filterHouse === "" || character.house.toLowerCase() === filterHouse.toLowerCase()
     )
     .filter((character) =>
       character.name.toLowerCase().includes(filterName.toLowerCase())
+    )
+    .filter((character) => filterAncestors === "" || character.ancestry.toLowerCase() === filterAncestors.toLowerCase()
     );
 
   const {pathname} = useLocation();
   const routeData = matchPath("/character/:idCharacter", pathname)
   const idCharacter = routeData !== null ? routeData.params.idCharacter : null;
-  const userData = allCharacters.find((character) => character.id === idCharacter);
+  const characterData = allCharacters.find((character) => character.id === idCharacter) || ls.get('characterData');
 
   return (
     <Routes>
@@ -77,9 +87,12 @@ const App = () => {
               filterHouse={filterHouse}
               handleName={handleName}
               filterName={filterName}
+              handleAncestors={handleAncestors}
+              filterAncestors={filterAncestors}
               handleReset={handleReset}
             />
-            <CharacterList filteredCharacters={filteredCharacters} />
+            <CharacterList filteredCharacters={filteredCharacters}/>
+            <Footer />
           </div>
         }
       />
@@ -89,7 +102,7 @@ const App = () => {
           <div className="secondBody">
             <Header />
             <BackBtn />
-            <CharacterCard userData={userData} getSpecies={getSpecies} getGender={getGender}/>
+            <CharacterCard characterData={characterData} getSpecies={getSpecies} getGender={getGender}/>
           </div>
         }
       />
