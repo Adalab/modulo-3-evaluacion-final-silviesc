@@ -18,8 +18,8 @@ function CharacterList({ filteredCharacters, filterName }) {
             No hay ningún personaje que coincida con la palabra "{filterName}"
           </p>
           <div className="broom"> 
-            <p className="search">Prueba a limpiar tu búsqueda</p>
-            <i className="fa-solid fa-broom"></i>
+            <p className="search">Prueba a limpiar tu búsqueda . . .</p>
+            <i className="fa-solid fa-broom broom"></i>
           </div>
         </article>
       )}
