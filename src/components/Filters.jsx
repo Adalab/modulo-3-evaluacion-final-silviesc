@@ -8,16 +8,16 @@ function Filters({ filterHouse, handleHouse, filterName, handleName, filterAnces
 
     return (
       <div className="filters">
-        <form className="formContainer">
+        <form className="form">
           <article>
-            <label htmlFor="search" className="formText">
+            <label htmlFor="search" className="form__text">
               Busca por personaje:
             </label>
             <input
+              className="form__input"
               type="text"
               placeholder="Hermione"
               id="search"
-              className="formInput"
               onChange={(ev) => handleName(ev.target.value)}
               value={filterName}
               onKeyDown={handleEnter}
@@ -25,9 +25,9 @@ function Filters({ filterHouse, handleHouse, filterName, handleName, filterAnces
           </article>
   
           <article>
-            <label className="formText">Selecciona la casa:</label>
+            <label className="form__text">Selecciona la casa:</label>
             <select
-              className="formInput"
+              className="form__input"
               onChange={(ev) => handleHouse(ev.target.value)}
               value={filterHouse}
             >
@@ -40,9 +40,9 @@ function Filters({ filterHouse, handleHouse, filterName, handleName, filterAnces
           </article>
 
           <article>
-            <label className="formText">Selecciona la pureza:</label>
+            <label className="form__text">Selecciona la pureza:</label>
             <select
-              className="formInput"
+              className="form__input"
               onChange={(ev) => handleAncestors(ev.target.value)}
               value={filterAncestors}
             >

@@ -11,10 +11,10 @@ function Character({ character }) {
       <img
         src={character.photo || notfound}
         alt={character.name}
-        className="img"
+        className="list__card--img"
       />
-      <h5 className="text">{character.name.toUpperCase()}</h5>
-      <p className="text">{capitalize(character.species)}</p>
+      <h5 className="list__card--name">{character.name.toUpperCase()}</h5>
+      <p className="list__card--species">{capitalize(character.species)}</p>
     </article>
   );
 }

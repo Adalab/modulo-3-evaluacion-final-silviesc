@@ -30,8 +30,6 @@ function CharacterCard({ characterData }) {
   const getSpeciesIcon = (species) => {
     if (species === "human") {
       return <i className="fa-solid fa-person-rays"></i>;
-    } else if (species === "werewolf") {
-      return <i className="fa-brands fa-wolf-pack-battalion"></i>
     }
   };
 
@@ -50,16 +48,16 @@ function CharacterCard({ characterData }) {
   };
 
   return (
-    <article className="articleContainer">
-      <img className="articlePhoto" src={characterData.photo || notfound} alt={characterData.name} />
-      <section className="sectionContainer">
-        <h2 className="sectionTitle">{characterData.name}</h2>
+    <article className="detail">
+      <img className="detail__photo" src={characterData.photo || notfound} alt={characterData.name} />
+      <section className="detail__text">
+        <h2 className="detail__text--title">{characterData.name}</h2>
         <h4>Estatus: {characterData.alive ? "Vivo/a" : "Muerto/a"} {getLifeStatusIcon(characterData.alive)}</h4>
         <h4>Especie: {getSpecies(characterData.species)} {getSpeciesIcon(characterData.species)}</h4>
         <h4>Género: {getGender(characterData.gender)}</h4>
         <h4>Casa: {characterData.house || "No pertenece a ninguna casa"}</h4>
       </section>
-      <img src={getHouseImage(characterData.house)} alt={characterData.house} className="articlePhoto"/>
+      <img className="detail__house" src={getHouseImage(characterData.house)} alt={characterData.house}/>
     </article>
   );
 }

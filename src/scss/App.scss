@@ -6,104 +6,203 @@
   overflow-y: auto;
 }
 
-.headerContainer {
+.header {
   display: flex;
   justify-content: center;
+
+  &__img {
+    width: 300px;
+    padding: 50px;
+
+    @media screen and (min-width: 768px) {
+      width: 400px;
+    }
+  }
 }
 
-.header {
-  width: 400px;
-  padding: 50px;
-}
-.formContainer {
+.filters {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 20px;
-  margin-bottom: 50px;
-}
-.formText {
-  color: white;
-  font-family: "Harry Potter", sans-serif;
-  font-size: 20px;
-  padding: 0px 20px;
-}
-.formInput {
-  font-family: "Harry Potter", sans-serif;
-  padding: 5px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    gap: 40px;
+  }
 }
 
-.bigContainer {
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 50px;
+  font-family: "Harry Potter", sans-serif;
+  font-size: 16px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 22px;
+  }
+
+  &__text {
+    color: white;
+    padding: 0px 20px;
+  }
+  &__input {
+    font-family: "Harry Potter", sans-serif;
+    padding: 5px;
+    width: 100px;
+  }
+}
+
+.resetBtn {
+  color: black;
+  font-size: 16px;
+  font-family: "Harry Potter", sans-serif;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  margin-bottom: 18px;
+  background-color: white;
+  border: 2px solid rgba(14, 12, 8, 0.905);
+  border-radius: 5px;
+  text-decoration: none;
+  margin-bottom: 50px;
+
+  &:hover {
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 10px 0 white inset, 0 0 10px 4px white;
+  }
+}
+
+.list {
   display: flex;
   flex-wrap: wrap;
   gap: 50px;
   justify-content: center;
-}
-.card {
-  background-color: rgba(229, 191, 66, 0.551);
-  border-radius: 5px;
-  text-decoration: none;
-}
-.card:hover {
-  transform: scale(1.1);
-  transition: transform 0.3s ease;
-  box-shadow: 0 0 10px 0 rgb(248, 245, 251) inset,
-    0 0 10px 4px rgb(248, 245, 251);
-}
-.link {
-  text-decoration: none;
-  color: black;
-}
-.img {
-  width: 200px;
-  height: 300px;
-  padding: 10px;
-}
-.text {
-  font-size: 16px;
-  font-family: "Harry Potter", sans-serif;
-  padding: 5px 10px;
+
+  &__card {
+    background-color: rgba(229, 191, 66, 0.551);
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: "Harry Potter", sans-serif;
+    padding: 5px 10px;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 10px 0 rgb(248, 245, 251) inset,
+        0 0 10px 4px rgb(248, 245, 251);
+    }
+
+    &--link {
+      text-decoration: none;
+      color: black;
+    }
+
+    &--img {
+      width: 200px;
+      height: 300px;
+      padding: 10px;
+    }
+
+    &--name {
+      text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #ffffff,
+        0 0 20px #ffffff;
+    }
+    &--species {
+      font-size: 16px;
+    }
+  }
 }
 
-.footer {
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+  font-family: "Harry Potter", sans-serif;
+  font-size: 25px;
   color: white;
-  font-size: 20px;
+  text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000,
+    0 0 20px #ff0000;
+
+  &__broom {
+    display: flex;
+    gap: 10px;
+  }
 }
 
 .secondBody {
   background-image: url("../images/dobby.webp");
-  background-size: cover; 
-  background-position: center; 
+  background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100vh;
 }
 
-.articleContainer {
+.detail {
   display: flex;
+  flex-direction: column;
   align-items: center;
   background-color: rgba(229, 191, 66, 0.551);
   border-radius: 5px;
-  width: 600px;
   height: auto;
+  box-shadow: 0 0 5px #000000, 0 0 10px #000000, 0 0 15px #ffffff,
+      0 0 20px #ffffff;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+
+  &__photo {
+    width: 200px;
+    padding: 20px;
+
+    @media screen and (min-width: 768px) {
+      width: 300px;
+    }
+  }
+  &__house {
+    width: 150px;
+    padding: 20px;
+
+    @media screen and (min-width: 768px) {
+      width: 250px;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: black;
+    font-family: "Harry Potter", sans-serif;
+    font-size: 16px;
+
+    @media screen and (min-width: 768px) {
+      font-size: 22px;
+    }
+
+    &--title {
+      font-size: 18px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #ffffff,
+      0 0 20px #ffffff;
+
+      @media screen and (min-width: 768px) {
+        font-size: 24px;
+      }
+    }
+  }
 }
-.sectionContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: black;
-  font-family: "Harry Potter", sans-serif;
-  font-size: 20px;
-}
-.sectionTitle {
-  font-size: 22px;
-}
-.articlePhoto {
-  width: 200px;
-  height: auto;
-  padding: 20px;
-}
+
 .backBtn {
   color: black;
   font-size: 20px;
@@ -115,46 +214,20 @@
   gap: 5px;
   width: 120px;
   height: 50px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   background-color: rgba(229, 191, 66, 0.551);
   border: 2px solid rgba(14, 12, 8, 0.905);
   border-radius: 5px;
   text-decoration: none;
+
+  &:hover {
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 10px 0 rgb(248, 245, 251) inset,
+      0 0 10px 4px rgb(248, 245, 251);
+  }
 }
-.backBtn:hover {
-  transform: scale(1.2);
-  transition: transform 0.3s ease;
-  box-shadow: 0 0 10px 0 rgb(248, 245, 251) inset,
-  0 0 10px 4px rgb(248, 245, 251);
-}
-.resetBtn {
-  color: black;
-  font-size: 18px;
-  font-family: "Harry Potter", sans-serif;
-  align-self: center;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  margin-bottom: 18px;
-  background-color: white;
-  border: 2px solid rgba(14, 12, 8, 0.905);
-  border-radius: 5px;
-  text-decoration: none;
-  margin-bottom: 50px;
-}
-.resetBtn:hover {
-  transform: scale(1.2);
-  transition: transform 0.3s ease;
-  box-shadow: 0 0 10px 0 white inset,
-    0 0 10px 4px white;
-}
-.filters {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-}
+
 .error {
   background-color: rgba(255, 0, 0, 0.56);
   height: 100vh;
@@ -163,26 +236,4 @@
   justify-content: center;
   align-items: center;
   font-family: "Harry Potter", sans-serif;
-}
-.searchContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.search {
-  font-family: "Harry Potter", sans-serif;
-  font-size: 20px;
-  color: white;
-  text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000;
-}
-
-.broom {
-  color: white;
-  text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000;
-  font-size: 25px;
-  display: flex;
-  gap: 10px;
 }

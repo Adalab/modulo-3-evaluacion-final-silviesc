@@ -9,7 +9,6 @@ import BackBtn from "./BackBtn";
 import CharacterCard from "./CharacterCard";
 import ls from '../sources/localStorage';
 import callToApi from "../sources/api";
-import Footer from "./Footer";
 import Error from "./Error";
 
 const App = () => {
@@ -83,7 +82,6 @@ const App = () => {
               handleReset={handleReset}
             />
             <CharacterList filteredCharacters={filteredCharacters} filterName={filterName}/>
-            <Footer />
           </div>
         }
       />
