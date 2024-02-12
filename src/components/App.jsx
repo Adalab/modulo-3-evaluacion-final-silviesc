@@ -10,6 +10,8 @@ import CharacterCard from "./CharacterCard";
 import ls from '../sources/localStorage';
 import callToApi from "../sources/api";
 import Error from "./Error";
+import Footer from "./Footer";
+
 
 const App = () => {
   const [allCharacters, setAllCharacters] = useState([]);
@@ -82,6 +84,7 @@ const App = () => {
               handleReset={handleReset}
             />
             <CharacterList filteredCharacters={filteredCharacters} filterName={filterName}/>
+            <Footer />
           </div>
         }
       />
@@ -92,6 +95,7 @@ const App = () => {
             <Header />
             <BackBtn />
             <CharacterCard characterData={characterData}/>
+            <Footer />
           </div>
         }
       />
