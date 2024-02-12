@@ -56,7 +56,7 @@ function Filters({ filterHouse, handleHouse, filterName, handleName, filterAnces
 
         </form>
         <button className="resetBtn" onClick={handleReset}>
-          <p>Reiniciar</p>
+          <p>Limpiar</p>
           <i className="fa-solid fa-wand-sparkles"></i>
         </button>
       </div>
